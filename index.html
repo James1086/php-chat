@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
   <head>
-	<link rel="shortcut icon" href="">
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,23 +16,23 @@
   </head>
   <body>
     <ul id="messages"></ul>
-	<button type="button" id="turn" name="button">Next Turn</button>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
         var socket = io();
-		$("#turn").on("click",function(e){
-			console.log('clicked turn');
-			socket.emit('pass_turn');
-			return false;
-		});
-		socket.on('pass_turn',function(){
-			if(players[_turn] == socket){
-				resetTimeOut();
-				next_turn();
-			}
-		});
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
       });
     </script>
   </body>
