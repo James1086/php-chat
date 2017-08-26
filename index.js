@@ -1,28 +1,42 @@
-   let players = [];
-   let current_turn = 0;
-   let timeOut;
-   let _turn = 0;
-   const MAX_WAITING = 5000;
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
 
-   function next_turn(){
-      _turn = current_turn++ % players.length;
-      players[_turn].emit('your_turn');
-      console.log("next turn triggered " , _turn);
-      triggerTimeout();
-   }
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
-   function triggerTimeout(){
-     timeOut = setTimeout(()=>{
-       next_turn();
-     },MAX_WAITING);
-   }
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
 
-   function resetTimeOut(){
-      if(typeof timeOut === 'object'){
-        console.log("timeout reset");
-        clearTimeout(timeOut);
-      }
-   }
+
+let players = [];
+let current_turn = 0;
+let timeOut;
+let _turn = 0;
+const MAX_WAITING = 5000;
+
+function next_turn(){
+  _turn = current_turn++ % players.length;
+  players[_turn].emit('your_turn');
+  console.log("next turn triggered " , _turn);
+  triggerTimeout();
+}
+
+function triggerTimeout(){
+ timeOut = setTimeout(()=>{
+   next_turn();
+ },MAX_WAITING);
+}
+
+function resetTimeOut(){
+  if(typeof timeOut === 'object'){
+	console.log("timeout reset");
+	clearTimeout(timeOut);
+  }
+}
 
  io.on('connection', function(socket){
   console.log('A player connected');

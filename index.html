@@ -15,15 +15,20 @@
     </style>
   </head>
   <body>
-	<button type="button" id="turn" name="button">Next Turn</button>
+    <ul id="messages"></ul>
+	 <button type="button" id="turn" name="button">Next Turn</button>
+
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
-		var socket = io();
+        var socket = io();
 		$("#turn").on("click",function(e){
-			socket.emit('pass_turn');
-		})
+			 socket.emit('pass_turn');
+		 })
       });
     </script>
   </body>
