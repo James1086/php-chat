@@ -24,8 +24,9 @@
         var socket = io();
 		$("#turn").on("click",function(e){
 			console.log('clicked turn');
-			 socket.emit('pass_turn');
-		 })
+			socket.emit('pass_turn');
+			return false;
+		});
       });
     </script>
   </body>
