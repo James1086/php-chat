@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+	<link rel="shortcut icon" href="">
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,6 +27,12 @@
 			console.log('clicked turn');
 			socket.emit('pass_turn');
 			return false;
+		});
+		socket.on('pass_turn',function(){
+			if(players[_turn] == socket){
+				resetTimeOut();
+				next_turn();
+			}
 		});
       });
     </script>

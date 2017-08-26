@@ -11,7 +11,6 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 
-
 let players = [];
 let current_turn = 0;
 let timeOut;
@@ -39,7 +38,7 @@ function resetTimeOut(){
 }
 
  io.on('connection', function(socket){
-  console.log('A player connected');
+	console.log('A player connected');
 
   players.push(socket);
   socket.on('pass_turn',function(){
