@@ -59,8 +59,6 @@ $Server->bind('open', 'wsOnOpen');
 $Server->bind('close', 'wsOnClose');
 // for other computers to connect, you will probably need to change this to your LAN IP or external IP,
 // alternatively use: gethostbyaddr(gethostbyname($_SERVER['SERVER_NAME']))
-$Server->wsStartServer('https://php-chat-server.herokuapp.com/', 9300);
-
-var_dump($_SERVER);
+$Server->wsStartServer('localhost', 8080);
 
 ?>
