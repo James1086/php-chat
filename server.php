@@ -61,4 +61,6 @@ $Server->bind('close', 'wsOnClose');
 // alternatively use: gethostbyaddr(gethostbyname($_SERVER['SERVER_NAME']))
 $Server->wsStartServer('https://php-chat-server.herokuapp.com/', 9300);
 
+var_dump($_SERVER);
+
 ?>
