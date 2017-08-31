@@ -9,7 +9,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-io.sockets.on('connection', function(socket) {
+io.on('connection', function(socket) {
 	connected_players.push(socket.id);
 	console.log('PLAYERS:');
 	console.log(connected_players);
@@ -20,10 +20,6 @@ io.sockets.on('connection', function(socket) {
 		connected_players.splice(i, 1);
 	});
 });
-
-io.on('connection', function(socket){
-
-
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
