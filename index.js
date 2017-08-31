@@ -9,18 +9,21 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket) {
+io.on('connection', function(socket){
 	connected_players.push(socket.id);
+	
 	console.log('PLAYERS:');
 	console.log(connected_players);
+	
 	socket.on('disconnect', function() {
-		console.log('PLAYERS:');
-		console.log(connected_players);
 		var i = connected_players.indexOf(socket.id);
 		connected_players.splice(i, 1);
+		
+		console.log('PLAYERS:');
+		console.log(connected_players);
 	});
 });
 
 http.listen(port, function(){
-  console.log('listening on *:' + port);
+	console.log('listening on *:' + port);
 });
