@@ -25,7 +25,6 @@
       $(function () {
         var socket = io();
         $('button').click(function(){
-			console.log(socket);
 			console.log('player ' + socket.id + ' is ready');
 			socket.emit('ready_message', socket.id);
 			return false;
