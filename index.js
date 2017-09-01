@@ -11,13 +11,18 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 	connected_players.push(socket.id);
+	if(connected_players.length == 2) {
+		console.log('START!');
+	}
 	
 	console.log('PLAYERS:');
 	console.log(connected_players);
 	
+	/*
 	socket.on('ready_message', function() {
 		console.log(socket.id + ' is ready!');
 	});
+	*/
 	
 	socket.on('disconnect', function() {
 		var i = connected_players.indexOf(socket.id);
