@@ -15,6 +15,10 @@ io.on('connection', function(socket){
 	console.log('PLAYERS:');
 	console.log(connected_players);
 	
+	socket.on('ready_message', function() {
+		console.log(socket.id + ' is ready!');
+	});
+	
 	socket.on('disconnect', function() {
 		var i = connected_players.indexOf(socket.id);
 		connected_players.splice(i, 1);
