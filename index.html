@@ -26,7 +26,7 @@
         var socket = io();
         $('button').click(function(){
 			console.log('player ' + socket.id + ' is ready');
-			socket.emit('ready_message', socket.id);
+			socket.emit('ready_message', 'TEST');
 			return false;
         });
         socket.on('ready_message', function(msg){
