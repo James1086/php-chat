@@ -17,19 +17,19 @@
   <body>
     <ul id="messages"></ul>
 	
-	<button>Ready?</button>
+	<button class="ready">Ready?</button>
 	
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
         var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
+        $('.ready').on('click', function(){
+			console.log('player ' + socket.id + ' is ready');
+			socket.emit('ready_message', socket.id + '_ready');
+			return false;
         });
-        socket.on('chat message', function(msg){
+        socket.on('ready_message', function(msg){
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
