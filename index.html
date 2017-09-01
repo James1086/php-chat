@@ -24,7 +24,7 @@
     <script>
       $(function () {
         var socket = io();
-        $('.ready').on('click', function(){
+        $('.ready').click(function(){
 			console.log('player ' + socket.id + ' is ready');
 			socket.emit('ready_message', socket.id + '_ready');
 			return false;
