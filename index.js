@@ -24,6 +24,10 @@ io.on('connection', function(socket){
 	});
 });
 
+socket.on('ready_message', function(msg){
+	console.log('ready!!!');
+});
+
 http.listen(port, function(){
 	console.log('listening on *:' + port);
 });
