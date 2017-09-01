@@ -24,7 +24,7 @@ io.on('connection', function(socket){
 	});
 });
 
-socket.on('ready_message', function(msg){
+io.on('ready_message', function(msg){
 	console.log('ready!!!');
 });
 
