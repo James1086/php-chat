@@ -24,6 +24,10 @@ io.on('connection', function(socket){
 	});
 	*/
 	
+	socket.on('ready_message', function(msg){
+		console.log(msg);
+	});
+	
 	socket.on('disconnect', function() {
 		var i = connected_players.indexOf(socket.id);
 		connected_players.splice(i, 1);
@@ -31,10 +35,6 @@ io.on('connection', function(socket){
 		console.log('PLAYERS:');
 		console.log(connected_players);
 	});
-});
-
-io.on('ready_message', function(msg){
-	console.log('ready!!!');
 });
 
 http.listen(port, function(){
