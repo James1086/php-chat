@@ -7,6 +7,7 @@ var connected_players = [];
 var path = require('path')
 
 app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html');
 	app.use(express.static(path.join(__dirname, 'public')));
 });
 
