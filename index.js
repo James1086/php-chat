@@ -4,11 +4,13 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = [];
+var path = require('path');
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
-	res.sendFile(__dirname + '/style.css');
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', function(socket){
 	connected_players.push(socket.id);
