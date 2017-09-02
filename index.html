@@ -3,6 +3,7 @@
   <head>
 	<style>
 		body {
+			position: relative;
 			-webkit-box-sizing: content-box;
 			-moz-box-sizing: content-box;
 			box-sizing: content-box;
@@ -22,14 +23,20 @@
 			-webkit-background-clip: border-box;
 			background-clip: border-box;
 			-webkit-background-size: 50px auto;
-		}	
+		}
+		.ready-form {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 	</style>
     <title>socket.io</title>
   </head>
   <body>
     <ul id="messages"></ul>
 	
-	<form>
+	<form class="ready-form">
 		<input type="text" name="user_name" placeholder="Enter your name" required>
 		<input type="submit" value="Ready">
 	</form>
