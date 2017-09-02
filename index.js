@@ -4,8 +4,11 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = [];
+var path = require('path');
 
-app.use(express.static("public"));
+app.get('/', function(req, res){
+	app.use(express.static(path.join(__dirname, 'public')));
+});
 
 io.on('connection', function(socket){
 	connected_players.push(socket.id);
