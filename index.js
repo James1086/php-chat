@@ -6,8 +6,7 @@ var active_player = '';
 var connected_players = [];
 
 app.get('/', function(req, res){
-	res.sendFile(__dirname + '/index.html');
-	res.sendFile(__dirname + '/css/style.css');
+	app.use(express.static(path.join(__dirname, 'public')));
 });
 
 io.on('connection', function(socket){
