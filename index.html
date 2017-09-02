@@ -3,7 +3,6 @@
   <head>
 	<style>
 		body {
-			position: relative;
 			-webkit-box-sizing: content-box;
 			-moz-box-sizing: content-box;
 			box-sizing: content-box;
@@ -34,9 +33,20 @@
 			border-radius: 10px;
 		}
 		.ready-form input[type="text"] {
-		    padding: 10px;
-			border-radius: 50px;
+			padding: 13px 10px 12px 10px;
+			border-radius: 50px 0px 0px 50px;
 			border: 0;
+			outline: 0;
+		}
+		.ready-form input[type="submit"] {
+			padding: 10px;
+			border-radius: 0px 50px 50px 0px;
+			border: 0;
+			background: #ffad33;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: 900;
+			outline: 0;
 		}
 	</style>
     <title>socket.io</title>
