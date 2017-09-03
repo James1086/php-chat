@@ -11,8 +11,8 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
-	socket.on('player_ready', function() {
-		console.log(socket.id + ' is ready!');
+	socket.on('player_ready', function(msg) {
+		console.log(msg + '(' + socket.id + ') is ready!');
 		connected_players.push(socket.id);
 		if(connected_players.length == 2) {
 			console.log('START!');
