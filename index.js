@@ -27,7 +27,7 @@ io.on('connection', function(socket){
 	});
 	
 	socket.on('disconnect', function() {
-		delete connected_players.socket.id;
+		delete connected_players[socket.id];
 		
 		console.log('PLAYERS:');
 		console.log(connected_players);
