@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 var active_player = '';
-var connected_players = [];
+var connected_players = {};
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
@@ -13,8 +13,8 @@ io.on('connection', function(socket){
 
 	socket.on('player_ready', function(msg) {
 		console.log(msg + '(' + socket.id + ') is ready!');
-		connected_players.push(socket.id);
-		if(connected_players.length == 2) {
+		connected_players[socket.id] = msg;
+		if(Object.keys(connected_players).length == 2) {
 			console.log('START!');
 		}
 		
@@ -27,8 +27,7 @@ io.on('connection', function(socket){
 	});
 	
 	socket.on('disconnect', function() {
-		var i = connected_players.indexOf(socket.id);
-		connected_players.splice(i, 1);
+		delete connected_players.socket.id;
 		
 		console.log('PLAYERS:');
 		console.log(connected_players);
