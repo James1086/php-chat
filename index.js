@@ -14,13 +14,15 @@ io.on('connection', function(socket){
 	socket.on('player_ready', function(msg) {
 		console.log(msg + '(' + socket.id + ') is ready!');
 		connected_players[socket.id] = msg;
+		
+		console.log('PLAYERS:');
+		console.log(connected_players);
+		
 		if(Object.keys(connected_players).length == 2) {
 			console.log('START!');
 			var keys = Object.keys(connected_players);				
 			console.log(connected_players[keys[ keys.length * Math.random() << 0]]);
 		}
-		console.log('PLAYERS:');
-		console.log(connected_players);
 	});
 	
 	socket.on('disconnect', function() {
