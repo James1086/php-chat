@@ -16,19 +16,18 @@ io.on('connection', function(socket){
 		connected_players[socket.id] = msg;
 		if(Object.keys(connected_players).length == 2) {
 			console.log('START!');
+			var firstPlayer = function (connected_players) {
+				var keys = Object.keys(connected_players)
+				return connected_players[keys[ keys.length * Math.random() << 0]];
+			};
+			console.log(firstPlayer);
 		}
-		
 		console.log('PLAYERS:');
 		console.log(connected_players);
 	});
 	
-	socket.on('ready_message', function(msg){
-		console.log(msg);
-	});
-	
 	socket.on('disconnect', function() {
 		delete connected_players[socket.id];
-		
 		console.log('PLAYERS:');
 		console.log(connected_players);
 	});
