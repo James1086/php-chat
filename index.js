@@ -10,19 +10,17 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-	connected_players.push(socket.id);
-	if(connected_players.length == 2) {
-		console.log('START!');
-	}
-	
-	console.log('PLAYERS:');
-	console.log(connected_players);
-	
-	/*
-	socket.on('ready_message', function() {
+
+	socket.on('player_ready', function() {
 		console.log(socket.id + ' is ready!');
+		connected_players.push(socket.id);
+		if(connected_players.length == 2) {
+			console.log('START!');
+		}
+		
+		console.log('PLAYERS:');
+		console.log(connected_players);
 	});
-	*/
 	
 	socket.on('ready_message', function(msg){
 		console.log(msg);

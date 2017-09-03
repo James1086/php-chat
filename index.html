@@ -54,7 +54,7 @@
   <body>
     <ul id="messages"></ul>
 	
-	<form class="ready-form">
+	<form class="ready-form" action="">
 		<input type="text" name="user_name" placeholder="Enter your name" required>
 		<input type="submit" value="Ready">
 	</form>
@@ -62,16 +62,29 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+		$(function () {
+			var socket = io();
+			$('.ready-form').submit(function(){
+				socket.emit( 'player_ready', $("[name='user_name']").val() );
+				$('.ready-form').replaceWith( "<div class='ready-form'>Player " + $("[name='user_name']").val() + " is ready!</div>" );
+				return false;
+			});
+			socket.on('ready_message', function(msg){
+				//$('#messages').append($('<li>').text(msg));
+				//window.scrollTo(0, document.body.scrollHeight);
+			});
+		});
+    </script>
+	<script>
       $(function () {
         var socket = io();
-        $('button').click(function(){
-			console.log('player ' + socket.id + ' is ready');
-			socket.emit('ready_message', 'TEST');
-			return false;
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
         });
-        socket.on('ready_message', function(msg){
-          //$('#messages').append($('<li>').text(msg));
-          //window.scrollTo(0, document.body.scrollHeight);
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
         });
       });
     </script>
