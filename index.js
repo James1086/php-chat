@@ -19,7 +19,7 @@ io.on('connection', function(socket){
 		console.log(connected_players);
 		
 		if(Object.keys(connected_players).length == 2) {
-			console.log('START!');
+			console.log('Starting:');
 			var keys = Object.keys(connected_players);				
 			console.log(connected_players[keys[ keys.length * Math.random() << 0]]);
 		}
