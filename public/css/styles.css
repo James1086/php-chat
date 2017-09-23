@@ -1,1 +1,46 @@
-body {text-align:center;}
+body {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 320px;
+	height: 320px;
+	border: none;
+	font: normal 100%/normal Arial, Helvetica, sans-serif;
+	color: rgba(255,255,255,1);
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	background: -webkit-linear-gradient(0deg, rgba(255,255,255,0.2) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 0), rgb(255, 153, 0);
+	background: -moz-linear-gradient(90deg, rgba(255,255,255,0.2) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 0), rgb(255, 153, 0);
+	background: linear-gradient(90deg, rgba(255,255,255,0.2) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 0), rgb(255, 153, 0);
+	background-position: auto auto;
+	-webkit-background-origin: padding-box;
+	background-origin: padding-box;
+	-webkit-background-clip: border-box;
+	background-clip: border-box;
+	-webkit-background-size: 50px auto;
+}
+.ready-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #9C27B0;
+	padding: 30px;
+	border-radius: 10px;
+}
+.ready-form input[type="text"] {
+	padding: 13px 10px 12px 10px;
+	border-radius: 50px 0px 0px 50px;
+	border: 0;
+	outline: 0;
+}
+.ready-form input[type="submit"] {
+	padding: 10px;
+	border-radius: 0px 50px 50px 0px;
+	border: 0;
+	background: #ffad33;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 900;
+	outline: 0;
+}
