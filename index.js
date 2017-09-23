@@ -1,32 +1,4 @@
-// Heroku static files
 process.env.PWD = process.cwd();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var port = process.env.PORT || 3000;
-var active_player = '';
-var connected_players = {};
-
-var express = require('express');
-var path = require('path');
-var app = express();
-
-var port = process.env.PORT || 3000;
-
-
-// Heroku static files
-app.set('views', path.join(process.env.PWD, 'public'));
-app.use(express.static(path.join(process.env.PWD, 'public')));
-
-console.log('process.env.PWD:');
-console.log(process.env.PWD);
-
-// Listen for requests
-http.listen(port, function(){
-	console.log('listening on *:' + port);
-});
-
-
-/*
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -34,9 +6,11 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
-app.use(express.static( 'public'));
+app.set('views', path.join(process.env.PWD, 'public'));
+app.use(express.static(path.join(process.env.PWD, 'public')));
+
 app.get('/', function(req, res){
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(process.env.PWD + '/public/index.html');
 });
 
 io.on('connection', function(socket){
@@ -65,4 +39,3 @@ io.on('connection', function(socket){
 http.listen(port, function(){
 	console.log('listening on *:' + port);
 });
-*/
