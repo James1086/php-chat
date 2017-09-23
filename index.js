@@ -7,7 +7,7 @@ var path = require('path');
 var app = express();
 
 // Define the port to run on
-app.set('port', 3000);
+var port = process.env.PORT || 3000;
 
 // Heroku static files
 app.set('views', path.join(process.env.PWD, 'public'));
@@ -17,9 +17,8 @@ console.log('process.env.PWD:');
 console.log(process.env.PWD);
 
 // Listen for requests
-var server = app.listen(app.get('port'), function() {
-  var port = server.address().port;
-  console.log('Magic happens on port ' + port);
+http.listen(port, function(){
+	console.log('listening on *:' + port);
 });
 
 
