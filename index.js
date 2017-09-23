@@ -9,7 +9,9 @@ var app = express();
 // Define the port to run on
 app.set('port', 3000);
 
-app.use(express.static(process.env.PWD + '/public'));
+// Heroku static files
+app.set('views', path.join(process.env.PWD, 'public'));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
