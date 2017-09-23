@@ -13,6 +13,9 @@ app.set('port', 3000);
 app.set('views', path.join(process.env.PWD, 'public'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
 
+console.log(process.env.PWD);
+conosle.log(__dirname);
+
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
