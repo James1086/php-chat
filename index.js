@@ -9,12 +9,9 @@ var path = require('path');
 var active_player = '';
 var connected_players = {};
 
-// Define the port to run on
-var port = process.env.PORT || 3000;
-
 // Heroku static files
 app.set('views', path.join(process.env.PWD, 'public'));
-app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use(app.static(path.join(process.env.PWD, 'public')));
 
 console.log('process.env.PWD:');
 console.log(process.env.PWD);
