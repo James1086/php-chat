@@ -1,17 +1,21 @@
 // Heroku static files
 process.env.PWD = process.cwd();
-
-var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
-var path = require('path');
 var active_player = '';
 var connected_players = {};
 
+var express = require('express');
+var path = require('path');
+var app = express();
+
+var port = process.env.PORT || 3000;
+
+
 // Heroku static files
 app.set('views', path.join(process.env.PWD, 'public'));
-app.use(app.static(path.join(process.env.PWD, 'public')));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 console.log('process.env.PWD:');
 console.log(process.env.PWD);
