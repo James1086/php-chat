@@ -6,6 +6,9 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+console.log('path:');
+console.log(path);
+
 // Define the port to run on
 app.set('port', 3000);
 
