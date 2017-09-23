@@ -1,17 +1,17 @@
 // Heroku static files
-process.env.PWD = process.cwd()
-app.set('views', path.join(process.env.PWD, 'public'));
-app.use(express.static(path.join(process.env.PWD, 'public')));
+process.env.PWD = process.cwd();
+
 
 var express = require('express');
 var path = require('path');
 var app = express();
 
-console.log('path:');
-console.log(path);
-
 // Define the port to run on
 app.set('port', 3000);
+
+// Heroku static files
+app.set('views', path.join(process.env.PWD, 'public'));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 console.log('process.env.PWD:');
 console.log(process.env.PWD);
