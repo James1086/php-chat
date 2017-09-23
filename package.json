@@ -8,8 +8,5 @@
   },
   "scripts": {
     "start": "node index.js"
-  },
-  "directories": {
-	"public": "/public"
   }
 }
