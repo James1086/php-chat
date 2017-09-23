@@ -6,14 +6,24 @@ var server = require('http').createServer(app);
 var io = require('../..')(server);
 var port = process.env.PORT || 3000;
 
+server.listen(port, function () {
+  console.log('Server listening at port %d', port);
+});
+
+app.use(express.static(__dirname + '/view'));
+app.use(express.static(__dirname + '/script'));
+
+
+app.get('/',function(req,res){
+  res.sendFile('index.html');
+});
+
 
 var active_player = '';
 var connected_players = {};
 
 
-server.listen(port, function () {
-  console.log('Server listening at port %d', port);
-});
+
 
 // Routing
 app.use(express.static(path.join(__dirname, '/public')));
