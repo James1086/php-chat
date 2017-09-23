@@ -9,9 +9,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "directories":{
-        "image": "image",
-        "script": "script",
-        "view": "view"
-    } 
+  "directories": {
+	"public": "/public"
+  }
 }
