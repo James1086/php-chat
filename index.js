@@ -5,6 +5,7 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
+app.use(express.static( 'public'));
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
