@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
-app.use(express.static(__dirname + '/public'));
+application.use("/public", express.static(path.join(__dirname, 'public')));
 
 /*
 app.get('/', function(req, res){
@@ -14,8 +14,8 @@ app.get('/', function(req, res){
 */
 
 app.get('/', function(req, res) {
-		res.sendFile(__dirname + '/public/index.html');
-    });
+	res.sendFile(__dirname + '/public/index.html');
+});
 
 io.on('connection', function(socket){
 
