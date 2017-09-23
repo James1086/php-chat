@@ -9,9 +9,11 @@ var connected_players = {};
 app.set('views', path.join(process.env.PWD, 'public'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
 
+/*
 app.get('/', function(req, res){
-	res.sendFile(process.env.PWD + '/public/index.html');
+	res.sendFile(process.env.PWD + '/index.html');
 });
+*/
 
 io.on('connection', function(socket){
 
