@@ -1,10 +1,13 @@
 // Heroku static files
 process.env.PWD = process.cwd();
 
-
-var express = require('express');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
 var path = require('path');
-var app = express();
+var active_player = '';
+var connected_players = {};
 
 // Define the port to run on
 var port = process.env.PORT || 3000;
