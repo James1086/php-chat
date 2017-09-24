@@ -19,9 +19,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
-	socket.on('player_ready', function(msg) {
-		console.log(msg + '(' + socket.id + ') is ready!');
-		connected_players[socket.id] = msg;
+	socket.on('player_ready', function(character) {		
+		console.log(character.name + '(' + socket.id + ') the ' + character.hero + ' is ready! ');
+		connected_players[socket.id] = character;
 		
 		console.log('PLAYERS:');
 		console.log(connected_players);

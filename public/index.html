@@ -14,6 +14,9 @@
 	
 	<form class="ready-form" action="">
 		<input type="text" name="user_name" placeholder="Enter your name" required>
+		<input type="radio" name="hero" value="warrior"> Warrior<br>
+		<input type="radio" name="hero" value="archer"> Archer<br>
+		<input type="radio" name="hero" value="mage"> Mage
 		<input type="submit" value="Ready">
 	</form>
 	
@@ -23,7 +26,12 @@
 		$(function () {
 			var socket = io();
 			$('.ready-form').submit(function(){
-				socket.emit( 'player_ready', $("[name='user_name']").val() );
+				var character = {
+					name: $("[name='user_name']").val(),
+					hero: $("[name='hero']:checked").val()	
+				};
+				//socket.emit( 'player_ready', $("[name='user_name']").val() );
+				socket.emit( 'player_ready', character );
 				$('.ready-form').replaceWith( "<div class='ready-form'>Player " + $("[name='user_name']").val() + " is ready!</div>" );
 				return false;
 			});
