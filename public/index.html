@@ -20,15 +20,36 @@
 			<input type="radio" name="hero" value="mage"> Mage
 		</div>
 		<div class="hero-stats">
-			attack <input type="range" range-group="stat-group" name="attack" range-group-max-sum="16" min="1" max="10">
-			defence <input type="range" range-group="stat-group" name="defence" range-group-max-sum="16" min="1" max="10">
-			speed <input type="range" range-group="stat-group" name="speed" range-group-max-sum="16" min="0" max="10">
-			luck <input type="range" range-group="stat-group" name="luck" range-group-max-sum="16" min="0" max="10">
-			
-			<input type="number" name="attack" value="0"><br/>
-			<input type="number" name="defence" value="0"><br/>
-			<input type="number" name="speed" value="0"><br/>
-			<input type="number" name="luck" value="0">
+			<table>
+				<tr>
+					<th>STR</th>
+					<td>
+						<input class="slider" type="range" range-group="stats" name="attack" range-group-max-sum="16" min="0" max="10" value="5">
+					</td>
+					<td class="stat-val">5</td>
+				</tr>
+				<tr>
+					<th>DEF</th>
+					<td>
+						<input class="slider" type="range" range-group="stats" name="defence" range-group-max-sum="16" min="0" max="10" value="5">
+					</td>
+					<td class="stat-val">5</td>
+				</tr>
+				<tr>
+					<th>SPD</th>
+					<td>
+						<input class="slider" type="range" range-group="stats" name="speed" range-group-max-sum="16" min="0" max="10" value="3">
+					</td>
+					<td class="stat-val">3</td>
+				</tr>
+				<tr>
+					<th>LUK</th>
+					<td>
+						<input class="slider" type="range" range-group="stats" name="luck" range-group-max-sum="16" min="0" max="10" value="3">
+					</td>
+					<td class="stat-val">3</td>
+				</tr>
+			</table>
 		</div>		
 		<input type="text" name="user_name" placeholder="Enter your name" required>
 		<input type="submit" value="Ready">
@@ -40,11 +61,19 @@
 	
     <script>
 		$(function () {
+			$("[type='range']").on("change", function() {
+				console.log($(this).val());
+				$(this).parent().siblings(".stat-val").text($(this).val());
+			});
 			var socket = io();
 			$('.ready-form').submit(function(){
 				var character = {
 					name: $("[name='user_name']").val(),
-					hero: $("[name='hero']:checked").val()	
+					hero_class: $("[name='hero']:checked").val(),
+					attack: $("[name='attack']").val(),
+					defence: $("[name='defence']").val(),
+					speed: $("[name='speed']").val(),
+					luck: $("[name='luck']").val()
 				};
 				//socket.emit( 'player_ready', $("[name='user_name']").val() );
 				socket.emit( 'player_ready', character );

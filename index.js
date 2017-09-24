@@ -21,6 +21,7 @@ io.on('connection', function(socket){
 
 	socket.on('player_ready', function(character) {		
 		console.log(character.name + '(' + socket.id + ') the ' + character.hero + ' is ready! ');
+		console.log(character.name + '(ATT: ' + character.attack + '(DEF: ' + character.defence + '(SPD: ' + character.speed + '(LUK: ' + character.luck);
 		connected_players[socket.id] = character;
 		
 		console.log('PLAYERS:');
