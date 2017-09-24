@@ -6,7 +6,7 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background: #9C27B0;
+	background: #23211f;
 	padding: 30px;
 	border-radius: 10px;
 }
@@ -20,7 +20,7 @@ body {
 	padding: 10px;
 	border-radius: 0px 50px 50px 0px;
 	border: 0;
-	background: #23211f;
+	background: #ffad33;
 	color: #fff;
 	text-transform: uppercase;
 	font-weight: 900;
