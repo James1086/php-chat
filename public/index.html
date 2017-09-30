@@ -64,6 +64,11 @@
 			$("[type='range']").on("change", function() {
 				console.log($(this).val());
 				$(this).parent().siblings(".stat-val").text($(this).val());
+				var sum = 0;
+				$("[type='range']").each(function(){
+					sum += +$(this).val();
+					console.log(sum);
+				});
 			});
 			var socket = io();
 			$('.ready-form').submit(function(){
