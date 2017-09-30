@@ -50,6 +50,16 @@
 					<td class="stat-val">3</td>
 				</tr>
 			</table>
+			
+			<form>
+  <formgroup class="ranges">
+    <input type="range" min="0" max="100">
+    <input type="range" min="0" max="100">
+    <input type="range" min="0" max="100">
+    <input type="range" min="0" max="100">
+  </formgroup>
+</form>
+
 		</div>		
 		<input type="text" name="user_name" placeholder="Enter your name" required>
 		<input type="submit" value="Ready">
@@ -61,6 +71,12 @@
 	
     <script>
 		$(function () {
+		var ranges = Array.from(document.querySelector('.ranges').children);
+
+var total = ranges.reduce(function(acc, curr) {
+  return acc + Number(curr.value)
+}, 0)
+
 			$("[type='range']").on("change", function() {
 				console.log($(this).val());
 				$(this).parent().siblings(".stat-val").text($(this).val());
