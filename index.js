@@ -8,7 +8,7 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
-var gameManager = require("./pixi.min.js");
+var PIXI = require("pixi.min.js");
 
 app.set('views', path.join(process.env.PWD, 'public'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
@@ -33,6 +33,7 @@ io.on('connection', function(socket){
 			console.log('Starting:');
 			var keys = Object.keys(connected_players);				
 			console.log(connected_players[keys[ keys.length * Math.random() << 0]]);
+			
 			
 			//Create the renderer
 			var renderer = PIXI.autoDetectRenderer(256, 256);
