@@ -24,42 +24,35 @@
 				<tr>
 					<th>STR</th>
 					<td>
-						<input class="slider" type="range" range-group="stats" name="attack" range-group-max-sum="16" min="0" max="10" value="5">
+						<input class="stats" type="number" name="attack" range-group-max-sum="15" min="1" max="10" step="1" value="5">
 					</td>
 					<td class="stat-val">5</td>
 				</tr>
 				<tr>
 					<th>DEF</th>
 					<td>
-						<input class="slider" type="range" range-group="stats" name="defence" range-group-max-sum="16" min="0" max="10" value="5">
+						<input class="stats" type="number" name="defence" range-group-max-sum="15" min="1" max="10" step="1" value="5">
 					</td>
 					<td class="stat-val">5</td>
 				</tr>
 				<tr>
 					<th>SPD</th>
 					<td>
-						<input class="slider" type="range" range-group="stats" name="speed" range-group-max-sum="16" min="0" max="10" value="3">
+						<input class="stats" type="number" name="speed" range-group-max-sum="15" min="0" max="10" step="1" value="3">
 					</td>
 					<td class="stat-val">3</td>
 				</tr>
 				<tr>
 					<th>LUK</th>
 					<td>
-						<input class="slider" type="range" range-group="stats" name="luck" range-group-max-sum="16" min="0" max="10" value="3">
+						<input class="stats" type="number" name="luck" range-group-max-sum="15" min="0" max="10" step="1" value="3">
 					</td>
 					<td class="stat-val">3</td>
 				</tr>
+				<tr>
+					<td class="stat-remaining">0</td>
+				</tr>
 			</table>
-			
-			<form>
-  <formgroup class="ranges">
-    <input type="range" min="0" max="100">
-    <input type="range" min="0" max="100">
-    <input type="range" min="0" max="100">
-    <input type="range" min="0" max="100">
-  </formgroup>
-</form>
-
 		</div>		
 		<input type="text" name="user_name" placeholder="Enter your name" required>
 		<input type="submit" value="Ready">
@@ -67,24 +60,24 @@
 	
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="javascript/jquery.rangegroup.js" type="text/javascript"></script>
 	
     <script>
 		$(function () {
-		var ranges = Array.from(document.querySelector('.ranges').children);
 
-var total = ranges.reduce(function(acc, curr) {
-  return acc + Number(curr.value)
-}, 0)
-
-			$("[type='range']").on("change", function() {
-				console.log($(this).val());
-				$(this).parent().siblings(".stat-val").text($(this).val());
+			$("[type='number']").on("change", function() {
 				var sum = 0;
-				$("[type='range']").each(function(){
-					sum += +$(this).val();
-					console.log(sum);
+				var newVal = $(this).val();
+				$("[type='number']").each(function(){
+					sum += +$(this).val();		
 				});
+				if(sum <= 16) {
+					console.log($(this).val());
+					$(this).parent().siblings(".stat-val").text($(this).val());
+				} else {
+					$(this).val(newVal - 1);
+					sum -= 1;
+				}
+				$('.stat-remaining').text(16 - sum);
 			});
 			var socket = io();
 			$('.ready-form').submit(function(){
