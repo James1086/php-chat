@@ -8,8 +8,6 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
-var PIXI = require('pixi.min.js')(http);
-
 app.set('views', path.join(process.env.PWD, 'public'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
 
@@ -33,18 +31,6 @@ io.on('connection', function(socket){
 			console.log('Starting:');
 			var keys = Object.keys(connected_players);				
 			console.log(connected_players[keys[ keys.length * Math.random() << 0]]);
-			
-				//Create the renderer
-	var renderer = PIXI.autoDetectRenderer(256, 256);
-
-	//Add the canvas to the HTML document
-	document.body.appendChild(renderer.view);
-
-	//Create a container object called the `stage`
-	var stage = new PIXI.Container();
-
-	//Tell the `renderer` to `render` the `stage`
-	renderer.render(stage);
 		}
 	});
 	
