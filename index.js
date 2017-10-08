@@ -8,6 +8,8 @@ var port = process.env.PORT || 3000;
 var active_player = '';
 var connected_players = {};
 
+var gameManager = require("gameManager.js");
+
 app.set('views', path.join(process.env.PWD, 'public'));
 app.use(express.static(path.join(process.env.PWD, 'public')));
 
