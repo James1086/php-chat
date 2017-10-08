@@ -34,7 +34,7 @@ io.on('connection', function(socket){
 			var keys = Object.keys(connected_players);				
 			console.log(connected_players[keys[ keys.length * Math.random() << 0]]);
 			
-			
+			/*
 			//Create the renderer
 			var renderer = PIXI.autoDetectRenderer(256, 256);
 
@@ -46,6 +46,7 @@ io.on('connection', function(socket){
 
 			//Tell the `renderer` to `render` the `stage`
 			renderer.render(stage);
+			*/
 		}
 	});
 	
